@@ -45,3 +45,4 @@ export default tseslint.config(
   // Disable rules that conflict with Prettier formatting.
   prettier,
 );
+
