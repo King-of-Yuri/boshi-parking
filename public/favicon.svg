@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="泊识停车">
+  <rect width="32" height="32" rx="8" fill="#0c1017"/>
+  <rect x="3" y="9" width="26" height="14" rx="3" fill="#3d7dff"/>
+  <rect x="5" y="11" width="22" height="10" rx="2" fill="none" stroke="#e7ecf3" stroke-width="2"/>
+  <rect x="5" y="7" width="4" height="18" rx="2" fill="#e7ecf3"/>
+  <rect x="7" y="14.5" width="19" height="3" rx="1.5" fill="#e7ecf3"/>
+</svg>

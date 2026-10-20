@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+@theme {
+  --color-bg: #0c1017;
+  --color-surface: #141a24;
+  --color-surface-2: #1b2330;
+  --color-fg: #e7ecf3;
+  --color-muted: #8b96a8;
+  --color-subtle: #5c6778;
+  --color-border: #242c3a;
+  --color-primary: #3d7dff;
+  --color-primary-fg: #f4f7ff;
+  --color-success: #3d9a6a;
+  --color-warn: #c9843a;
+  --color-danger: #c4544a;
+  --color-ring: #3d7dff;
+
+  --font-sans: "Noto Sans SC", "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Sans", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.07);
+  --shadow-border-hover: 0 0 0 1px rgba(255, 255, 255, 0.13);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+    outline-offset: -1px;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-fg) 4%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+
+  .hud-corners {
+    --hud: color-mix(in oklab, var(--color-primary) 70%, white);
+    background:
+      linear-gradient(var(--hud), var(--hud)) left top / 18px 2px no-repeat,
+      linear-gradient(var(--hud), var(--hud)) left top / 2px 18px no-repeat,
+      linear-gradient(var(--hud), var(--hud)) right top / 18px 2px no-repeat,
+      linear-gradient(var(--hud), var(--hud)) right top / 2px 18px no-repeat,
+      linear-gradient(var(--hud), var(--hud)) left bottom / 18px 2px no-repeat,
+      linear-gradient(var(--hud), var(--hud)) left bottom / 2px 18px no-repeat,
+      linear-gradient(var(--hud), var(--hud)) right bottom / 18px 2px no-repeat,
+      linear-gradient(var(--hud), var(--hud)) right bottom / 2px 18px no-repeat;
+  }
+}
+
+.plate-face {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  border: 2px solid #f4f7ff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.plate-blue {
+  background: #1a4e9a;
+  color: #f4f7ff;
+}
+.plate-green {
+  background: linear-gradient(180deg, #d5efc4 0%, #4ea35f 100%);
+  color: #111827;
+  border-color: #f4f7ff;
+}
+.plate-yellow {
+  background: #d6a31a;
+  color: #111827;
+}
+.plate-white {
+  background: #eef2f6;
+  color: #111827;
+}
+.plate-black {
+  background: #1a1c20;
+  color: #f4f7ff;
+}
+
+@keyframes scan-y {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(220%);
+  }
+}
+
+.scan-line {
+  animation: scan-y 1.6s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-line {
+    animation: none;
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
